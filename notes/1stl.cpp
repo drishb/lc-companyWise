@@ -33,7 +33,9 @@ void explainPair() {
 
 }
 
-//Vectors
+//Vectors https://takeuforward.org/c/vector-in-c-stl/
+/* Vectors in STL are basically dynamic arrays that have the ability to change size whenever elements are added or deleted from them.
+Vector elements can be easily accessed and traversed using iterators. A vector stores elements in contiguous memory locations.*/
 void explainVector() {
 
     vector<int> v;
@@ -47,9 +49,9 @@ void explainVector() {
 
     v.push_back({1, 2});
     v.emplace_back(1, 2);
-    //assumes to be a pair so {} not req
+    //in emplace ,assumes to be a pair so {} not req not so in push_back
 
-    vector<int> v(5, 100);
+    vector<int> v(5, 100);// more elements can be added later on
     //{100, 100, 100, 100, 100}
 
     vector<int> v(5);
@@ -66,12 +68,12 @@ void explainVector() {
 
     vector<int>::iterator it = v.begin();
     //v.begin() points the 1st element's memory
-    it++;
+    it++;  //shifts to next element's memory
     cout << *(it) << " ";
     //*( ) takes the element inside the memory
 
     it = it + 2;
-    //shifts to next element's memory
+    //shifts to next to next element's memory
     cout << *(it) << " ";
 
     vector<int>::iterator it = v.end();
@@ -149,19 +151,24 @@ void explainList() {
 }
 
 //Deque
+/* A deque (double-ended queue) is a sequence container that allows fast insertion 
+and deletion of elements from both the front and back. It is part of the C++ Standard Library and 
+provides a dynamic array-like structure.*/
 void explainDeque() {
-    deque<int> dq;
+    deque<int> dq;// cretes empty dq
     dq.push_back(1);
-    dq.emplace_back(2);
+    dq.emplace_back(2);// more efficient for complex data types
     //{1, 2}
-    dq.push_front(4);
+    dq.push_front(4);//4,1,2
     dq.emplace_front(3);
     //{3, 4, 1, 2}
 
-    dq.pop_back();  //{3, 4, 1}
+    dq.pop_back();  //{3, 4, 1} removes last element 
     dq.pop_front(); //{4, 1}
 
     dq.back();
+    //Returns a reference to the last element in the deque (which is now 1).
+    //front(): Returns a reference to the first element in the deque (which is now 4).
     dq.front();
 
     //rest functns are same as vector
@@ -179,9 +186,9 @@ void explainStack() {
     st.push(3);     //{3, 3, 2, 1}
     st.emplace(5);  //{5, 3, 3, 2, 1}
 
-    cout << st.top();   //prints 5
+    cout << st.top();   //prints 5  
     // In stack indexing is not allowed i.e., st[0]
-    st.pop(); //st looks like {3, 3, 2, 1}
+    st.pop(); //st looks like {3, 3, 2, 1} removes top element from stack
 
     cout << st.top();   //prints 3
 
@@ -189,7 +196,7 @@ void explainStack() {
     cout << st.empty();   //prints 0 i.e., False
 
     stack<int>st1, st2;
-    st1.swap(st2);
+    st1.swap(st2);// This swaps the contents of two stacks (st1 and st2). After this operation, both stacks will contain elements from each other.
 }
 
 //Queues
@@ -215,6 +222,9 @@ void explainQueue() {
 }
 
 //Priority Queue
+/*A priority_queue is a container that stores elements in a way that allows for efficient retrieval of the highest (or lowest) priority element.
+    By default, it implements a maximum heap, meaning the largest element is always at the top. You can also create a minimum heap by specifying a different comparison function.*/
+
 void explainPQ() {
     //Maximum Heap
     priority_queue<int>pq;
@@ -315,7 +325,7 @@ void explainMultiSet() {
     //rest all function same as set
 }
 
-//Unordered Set
+//Unordered Set https://takeuforward.org/c/unordered-set-in-c-stl/
 void explainUSet() {
     unordered_set<int> st;
     //lower and upper_bound functn
